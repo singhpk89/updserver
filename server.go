@@ -17,7 +17,7 @@ import (
 )
 
 func main() {
-	serverPort := 5000
+	serverPort := 5001
 	if len(os.Args) > 1 {
 		if v, err := strconv.Atoi(os.Args[1]); err != nil {
 			fmt.Printf("Invalid port %v, err %v", os.Args[1], err)
