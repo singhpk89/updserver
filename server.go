@@ -29,7 +29,7 @@ func main() {
 
 	addr := net.UDPAddr{
 		Port: serverPort,
-		IP:   net.ParseIP("18.61.92.203"),
+		IP:   net.ParseIP("127.0.0.1"),
 	}
 	server, err := net.ListenUDP("udp", &addr)
 	if err != nil {
