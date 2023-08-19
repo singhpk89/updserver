@@ -227,7 +227,7 @@ func handleEvent(eventKey string, json csgolog.Message) {
 }
 
 func httpApi(endpoint string, jsonData string) {
-	url := "http://127.0.0.1:8000/api/admin/" + endpoint
+	url := "https://vccpvc59e6.execute-api.ap-south-1.amazonaws.com/" + endpoint
 	jsonRequest := []byte(jsonData)
 	req, err := http.NewRequest("POST", url, bytes.NewBuffer(jsonRequest))
 	if err != nil {
