@@ -179,27 +179,14 @@ func handleEvent(eventKey string, json csgolog.Message) {
 	case "TeamNotice":
 	case "PlayerConnected":
 		httpApi("player-connect", csgolog.ToJSON(json))
-		// Insert Player into Players table
-		// player, ok := json.(csgolog.PlayerConnected)
-		// if ok {
-		// 	fmt.Println("Handle Event:", player.Player.Name)
-		// 	foundPlayer, query := PlayerTable.Where(&PlayerTable.T.StreamId, player.Player.SteamID).Get()
-		// 	fmt.Println("Handle Event:", foundPlayer, query)
-		// 	if &foundPlayer == nil {
-		// 		_ = PlayerTable.Insert(Player{TeamId: 1, StreamId: player.Player.SteamID, Side: player.Player.Side, Name: player.Player.Name})
-		// 	} else {
-		// 		PlayerTable.Where(&PlayerTable.T.StreamId, "1").Update(&PlayerTable.T.Side, PlayerTable.T.Side)
 
-		// 	}
-
-		// 	// _ = PlayerTable.Insert(Player{TeamId: 1, StreamId: player.Player.SteamID, Side: player.Player.Side, Name: player.Player.Name})
-
-		// }
 	case "PlayerDisconnected":
 		httpApi("player-disconnect", csgolog.ToJSON(json))
 	case "PlayerEntered":
+		httpApi("player-connect", csgolog.ToJSON(json))
 	case "PlayerBanned":
 	case "PlayerSwitched":
+		httpApi("player-connect", csgolog.ToJSON(json))
 	case "PlayerSay":
 	case "PlayerPurchase":
 	case "PlayerKill":
@@ -227,7 +214,8 @@ func handleEvent(eventKey string, json csgolog.Message) {
 }
 
 func httpApi(endpoint string, jsonData string) {
-	url := "https://vccpvc59e6.execute-api.ap-south-1.amazonaws.com/" + endpoint
+	// url := "https://vccpvc59e6.execute-api.ap-south-1.amazonaws.com/api/admin" + endpoint
+	url := "http://127.0.0.1:8000/api/admin/" + endpoint
 	jsonRequest := []byte(jsonData)
 	req, err := http.NewRequest("POST", url, bytes.NewBuffer(jsonRequest))
 	if err != nil {
