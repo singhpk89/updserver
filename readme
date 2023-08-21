@@ -1,3 +1,4 @@
+nohup go run server.go &
 Start END
 106     320
 466     736
