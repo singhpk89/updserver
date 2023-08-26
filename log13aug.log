@@ -1,5 +1,3 @@
-[ec2-user@ip-172-31-42-92 updserver]$ go run updserver 
-Listen at 0.0.0.0:5001
 Received 106.51.73.112:10001 : ????RL 08/13/2023 - 07:14:51: [META] Loaded 0 plugins (1 already loaded)
 
 {"time":"2023-08-13T07:14:51Z","type":"Unknown","raw":"[META] Loaded 0 plugins (1 already loaded)"}
