@@ -164,6 +164,7 @@ func handleEvent(eventKey string, json csgolog.Message) {
 	switch eventKey {
 	case "ServerMessage":
 	case "FreezTimeStart":
+		httpApi("round-end", csgolog.ToJSON(json))
 	case "WorldMatchStart":
 		httpApi("match-start", csgolog.ToJSON(json))
 
@@ -173,7 +174,7 @@ func handleEvent(eventKey string, json csgolog.Message) {
 	case "WorldRoundStart":
 		httpApi("round-start", csgolog.ToJSON(json))
 	case "WorldRoundEnd":
-		httpApi("round-end", csgolog.ToJSON(json))
+		
 	case "WorldGameCommencing":
 	case "TeamScored":
 	case "TeamNotice":
